@@ -1,4 +1,6 @@
 
+import ui.PlayerPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,14 +10,15 @@ import java.util.concurrent.TimeUnit;
 
 public class GameWindow extends JPanel {
 
-    private final int INIT_WIDTH = 400;
-    private final int INIT_HEIGHT = 600;
+    private final int INIT_WIDTH = 1600;
+    private final int INIT_HEIGHT = 900;
 
     private ScheduledExecutorService uiUpdater;
     private Game game;
 
     public GameWindow(Game game) {
         this.game = game;
+        setUpUiElements();
 
         setPreferredSize(new Dimension(INIT_WIDTH, INIT_HEIGHT));
         this.setDoubleBuffered(true);
@@ -38,37 +41,31 @@ public class GameWindow extends JPanel {
         });
     }
 
-    private void startAnimation() {
-        uiUpdater = Executors.newScheduledThreadPool(1);
-        uiUpdater.scheduleAtFixedRate(super::repaint, 0, 200, TimeUnit.MILLISECONDS);
+    private void setUpUiElements() {
+        this.setLayout(new BorderLayout());
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new BorderLayout());
+        bottomPanel.add(new PlayerPanel(), BorderLayout.WEST);
+        bottomPanel.setOpaque(false);
+
+        this.add(bottomPanel, BorderLayout.SOUTH);
     }
 
-    MouseListener mouseList = new MouseListener() {
+    private void startAnimation() {
+        uiUpdater = Executors.newScheduledThreadPool(1);
+        uiUpdater.scheduleAtFixedRate(super::repaint, 0, 10, TimeUnit.MILLISECONDS);
+    }
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-
-        @Override
+    private MouseListener mouseList = new MouseListener() {
         public void mousePressed(MouseEvent e) {
             game.getPlayer().moveToPoint(e.getX(), e.getY());
         }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
+        public void mouseClicked(MouseEvent e) { }
+        public void mouseReleased(MouseEvent e) { }
+        public void mouseEntered(MouseEvent e) { }
+        public void mouseExited(MouseEvent e) { }
     };
-
 
 }

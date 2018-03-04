@@ -15,7 +15,7 @@ public class Game {
 
     public void startGame() {
         scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(this::updateEntities, 0, 100, TimeUnit.MILLISECONDS);
+        scheduler.scheduleAtFixedRate(this::updateEntities, 0, 10, TimeUnit.MILLISECONDS);
     }
 
     private void updateEntities() {
