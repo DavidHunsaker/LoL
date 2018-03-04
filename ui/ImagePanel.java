@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ImagePanel extends JPanel {
     private Image picture;
-    private String assetRoot = "ui/assets/";
+    private String assetRoot = "src/ui/assets/";
 
     ImagePanel() { }
 
