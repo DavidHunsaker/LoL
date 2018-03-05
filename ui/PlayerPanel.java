@@ -97,7 +97,7 @@ public class PlayerPanel extends JPanel {
 
     private void loadAndAssignFonts() {
         try {
-            Font baseFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("src/ui/assets/interface/myriad-pro-regular.ttf"));
+            Font baseFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("ui/assets/interface/myriad-pro-regular.ttf"));
             Font levelFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.LEVEL_FONT));
             Font statFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.STAT_FONT));
             Font moneyFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.MONEY_FONT));
