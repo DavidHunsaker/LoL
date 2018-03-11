@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerPanel extends JPanel {
+class PlayerPanel extends JPanel {
 
     private double uiScale = 1.0;
 
@@ -32,7 +32,7 @@ public class PlayerPanel extends JPanel {
     private JLabel moneyAmount = new JLabel();
     private JPanel experienceBar = new JPanel();
 
-    public PlayerPanel() {
+    PlayerPanel() {
         this.setBackground(new Color(27, 38, 40));
         this.sizeMapping = createSizeMapping(uiScale);
 
@@ -72,8 +72,7 @@ public class PlayerPanel extends JPanel {
 
     // The panel that holds the character portrait and experience bar
     private JPanel createLeftPanel() {
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BorderLayout());
+        JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.add(createPortraitPanel(), BorderLayout.NORTH);
         leftPanel.setOpaque(false);
         JPanel spacer = new JPanel();
@@ -86,8 +85,7 @@ public class PlayerPanel extends JPanel {
     }
 
     private JPanel createRightPanel() {
-        JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BorderLayout());
+        JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.setOpaque(false);
         rightPanel.add(createInventoryPanel(), BorderLayout.NORTH);
         rightPanel.add(createMoneyPanel(), BorderLayout.SOUTH);
@@ -124,15 +122,13 @@ public class PlayerPanel extends JPanel {
         ImagePanel portraitPanel = new ImagePanel("portraits/teemo.png", portraitSize, portraitSize);
         portraitPanel.setLayout(new BorderLayout());
 
-        JPanel levelPanel = new JPanel();
+        JPanel levelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, levelPaddingSize));
         levelPanel.setPreferredSize(new Dimension(portraitSize / 3, portraitSize / 4));
         levelPanel.setBackground(Color.BLACK);
-        levelPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, levelPaddingSize));
         level.setForeground(LEVEL_COLOR);
         levelPanel.add(level);
 
-        JPanel bottomPortrait = new JPanel();
-        bottomPortrait.setLayout(new BorderLayout());
+        JPanel bottomPortrait = new JPanel(new BorderLayout());
         bottomPortrait.setOpaque(false);
         bottomPortrait.add(levelPanel, BorderLayout.EAST);
 
@@ -142,9 +138,8 @@ public class PlayerPanel extends JPanel {
     }
 
     private JPanel createExperienceBar() {
-        JPanel fullBar = new JPanel();
+        JPanel fullBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         fullBar.setBackground(Color.BLACK);
-        fullBar.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         experienceBar.setBackground(EXPERIENCE_COLOR);
         experienceBar.setPreferredSize(new Dimension(0, sizeMapping.get(SizeDefinition.EXPERIENCE_BAR_HEIGHT)));
@@ -198,12 +193,12 @@ public class PlayerPanel extends JPanel {
         int itemPanelSize = sizeMapping.get(SizeDefinition.ITEM_PANEL);
         int inventoryGap = sizeMapping.get(SizeDefinition.GAP);
 
-        JPanel inventoryPanel = new JPanel();
-        inventoryPanel.setOpaque(false);
         GridLayout layout = new GridLayout(2, 3);
         layout.setHgap(inventoryGap);
         layout.setVgap(inventoryGap);
-        inventoryPanel.setLayout(layout);
+
+        JPanel inventoryPanel = new JPanel(layout);
+        inventoryPanel.setOpaque(false);
 
         for (ImagePanel panel : inventorySlots) {
             panel.setPreferredSize(new Dimension(itemPanelSize, itemPanelSize));

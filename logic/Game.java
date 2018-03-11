@@ -1,3 +1,7 @@
+package logic;
+
+import logic.Entity;
+
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
