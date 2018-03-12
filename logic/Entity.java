@@ -44,8 +44,8 @@ public class Entity {
     }
 
     public void moveToPoint(double x, double y) {
-        targetX = x;
-        targetY = y;
+        targetX = x - (size / 2);
+        targetY = y - (size / 2);
         entityAction = EntityAction.MOVING;
         updateOrientation();
     }
