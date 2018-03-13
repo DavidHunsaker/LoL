@@ -1,4 +1,4 @@
-package ui;
+package ui.components.util;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,9 +10,9 @@ public class ImagePanel extends JPanel {
     private Image picture;
     private String assetRoot = "ui/assets/";
 
-    ImagePanel() { }
+    public ImagePanel() { }
 
-    ImagePanel(String imagePath, int width, int height) {
+    public ImagePanel(String imagePath, int width, int height) {
         setPicture(imagePath, width, height);
     }
 

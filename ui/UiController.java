@@ -2,6 +2,10 @@ package ui;
 
 import logic.Entity;
 import logic.Game;
+import ui.components.complete.ScrollPanel;
+import ui.components.complete.game.GamePanel;
+import ui.components.complete.GameWindow;
+import ui.components.complete.gui.GuiPanel;
 
 import java.util.List;
 import java.util.concurrent.Executors;

@@ -1,15 +1,17 @@
-package ui;
+package ui.components.complete;
 
+import ui.CardinalDirection;
+import ui.UiController;
 import ui.listeners.MousePresenceListener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-class ScrollPanel extends JPanel {
+public class ScrollPanel extends JPanel {
     private final int SCROLL_AREA_SIZE = 10;
 
-    ScrollPanel(UiController uiController) {
+    public ScrollPanel(UiController uiController) {
         JPanel scrollLeft = createTransparentJPanel();
         JPanel scrollUp = createTransparentJPanel();
         JPanel scrollRight = createTransparentJPanel();

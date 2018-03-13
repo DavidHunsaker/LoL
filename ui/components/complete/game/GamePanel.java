@@ -1,6 +1,8 @@
-package ui;
+package ui.components.complete.game;
 
 import logic.Entity;
+import ui.CardinalDirection;
+import ui.UiController;
 import ui.listeners.MousePressedListener;
 
 import javax.swing.*;
@@ -19,7 +21,7 @@ public class GamePanel extends JPanel {
     private final int MAP_WIDTH = 2000;
     private final int MAP_HEIGHT = 1300;
 
-    GamePanel(UiController uiController, Entity player) {
+    public GamePanel(UiController uiController, Entity player) {
         this.uiController = uiController;
         this.player = player;
 

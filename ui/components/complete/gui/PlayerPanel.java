@@ -1,4 +1,6 @@
-package ui;
+package ui.components.complete.gui;
+
+import ui.components.util.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
