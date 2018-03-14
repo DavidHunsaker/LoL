@@ -74,6 +74,8 @@ public class GamePanel extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
+                case 27: // Esc
+                    uiController.toggleSettingsVisible(); break;
                 case 37: // Left
                     uiController.setKeyScrollX(CardinalDirection.LEFT); break;
                 case 38: // Up
