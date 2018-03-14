@@ -4,15 +4,14 @@ import ui.components.util.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 class PlayerPanel extends JPanel {
 
-    private double uiScale = 1.0;
-
     private Map<SizeDefinition, Integer> sizeMapping;
+
+    private Font baseFont;
 
     private final Color ENHANCED_STAT_COLOR = new Color(18, 230, 31);
     private final Color NORMAL_STAT_COLOR = new Color(94, 166, 196);
@@ -34,7 +33,8 @@ class PlayerPanel extends JPanel {
     private JLabel moneyAmount = new JLabel();
     private JPanel experienceBar = new JPanel();
 
-    PlayerPanel() {
+    PlayerPanel(double uiScale, Font baseFont) {
+        this.baseFont = baseFont;
         this.setBackground(new Color(27, 38, 40));
         this.sizeMapping = createSizeMapping(uiScale);
 
@@ -97,7 +97,6 @@ class PlayerPanel extends JPanel {
 
     private void loadAndAssignFonts() {
         try {
-            Font baseFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("ui/assets/interface/myriad-pro-regular.ttf"));
             Font levelFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.LEVEL_FONT));
             Font statFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.STAT_FONT));
             Font moneyFont = baseFont.deriveFont((float) sizeMapping.get(SizeDefinition.MONEY_FONT));
